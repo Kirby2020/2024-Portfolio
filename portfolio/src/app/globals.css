@@ -8,6 +8,10 @@
   --accent-color-dark: #38A8A1;
   --button-color: #D8B847;
   --accent-color-light: #E3D769;
+
+  --font-size-title: 50rem;
+  --font-size-header: 24rem;
+  --font-size-text: 20rem;
 }
 
 * {
