@@ -1,4 +1,14 @@
-:root {}
+:root {
+  --background-color-primary: #222339;
+  --background-color-secondary: #2D2E43;
+  --background-color-primary: #3E3F5A;
+  --text-color: #FFF;
+  --accent-color: #5EFFF5;
+  --accent-color-light: #60C9C3;
+  --accent-color-dark: #38A8A1;
+  --button-color: #D8B847;
+  --accent-color-light: #E3D769;
+}
 
 * {
   box-sizing: border-box;
