@@ -1,0 +1,16 @@
+.button {
+    transition: all 0.2s ease;
+    font-size: var(--font-size-text);
+    padding: 1rem 4rem;
+    color: var(--text-color);
+    background-color: var(--button-color);
+    border: 1px solid var(--button-color);
+    border-radius: 3rem;
+}
+
+.button:hover {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: var(--accent-color-light);
+    border: 1px solid var(--accent-color-light);
+}
