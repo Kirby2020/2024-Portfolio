@@ -1,0 +1,16 @@
+.socialsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.socialIcon {
+    display: flex;
+    position: relative;
+    object-fit: contain;
+}
+
+.socialIcon img {
+    object-fit: contain;
+    margin: 0.3rem;
+}

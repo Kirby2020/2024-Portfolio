@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Kodchasan } from "next/font/google";
 import "./globals.css";
+import Header from "@/app/components/organisms/header/header";
 
-const inter = Inter({ subsets: ["latin"] });
+const kodchasan = Kodchasan({
+  weight: ["300", "500", "700"],
+  style: "normal",
+  subsets: ["latin"],
+  fallback: ["Inter"]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,10 +22,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={kodchasan.className}>
+        <Header />
+
         <main>
           {children}
         </main>
+
+        <footer>
+
+        </footer>
       </body>
     </html>
   );
