@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./userCard.module.css";
-import userImage from "@public/images/Youtube_logo.png";
+import userImage from "@public/user_image.png";
 import { userSocials } from "@/app/lib/data/userSocials";
 import SocialsList from "../socialsList/socialsList";
 
