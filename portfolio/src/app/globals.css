@@ -12,6 +12,8 @@
   --font-size-title: 5rem;
   --font-size-header: 2.4rem;
   --font-size-text: 2rem;
+
+  --border-radius-card: 3rem;
 }
 
 * {
