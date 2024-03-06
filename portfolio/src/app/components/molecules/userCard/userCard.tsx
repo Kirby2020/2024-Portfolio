@@ -1,5 +1,5 @@
 import Image from "next/image";
-import userImage from "@public/images/user-image.png";
+import userImage from "@public/images/user_image.png";
 import styles from "./userCard.module.css";
 import { userSocials } from "@/app/lib/data/userSocials";
 import SocialsList from "../socialsList/socialsList";
