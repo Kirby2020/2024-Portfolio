@@ -1,0 +1,30 @@
+.userCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color-primary);
+    border-radius: var(--border-radius-card);
+    padding: 4rem;
+    height: 50rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.userInfo li {
+    margin-left: 4rem;
+}
+
+.userInfo p {
+    line-height: 3.5rem;
+}
+
+.userImage {
+    width: 40rem;
+    height: 35rem;
+    object-fit: contain;
+}

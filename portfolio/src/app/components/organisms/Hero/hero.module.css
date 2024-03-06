@@ -1,0 +1,12 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero>div {
+    width: 40%;
+    min-width: 80rem;
+    margin-bottom: 4rem;
+}

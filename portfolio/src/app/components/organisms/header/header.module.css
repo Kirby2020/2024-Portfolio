@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 12rem;
+    background-color: var(--background-color-primary);
+    padding: 1rem 2rem;
+}
+
+.header ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.header a {
+    transition: color 0.2s ease;
+    text-decoration: none;
+    font-weight: 300;
+    color: var(--text-color);
+    padding: 1rem 2rem;
+}
+
+.header a:hover,
+.header a:active {
+    transition: color 0.2s ease;
+    color: var(--accent-color);
+}
