@@ -1,5 +1,4 @@
 import Image from "next/image";
-import userImage from "@public/images/user_image.png";
 import styles from "./userCard.module.css";
 import { userSocials } from "@/app/lib/data/userSocials";
 import SocialsList from "../socialsList/socialsList";
@@ -26,7 +25,7 @@ export default function UserCard() {
             </div>
 
             <div className={styles.userInfo}>
-                <Image className={styles.userImage} src={userImage} alt="user image" />
+                <Image className={styles.userImage} src={""} alt="user image" />
                 <SocialsList socialIcons={userSocials} />
             </div>
         </div>
