@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Project {
+  id           String       @id @unique @default(cuid())
+  title        String
+  type         ProjectType?
+  description  String
+  url          String
+  previewUrl   String
+  dateCreated  DateTime?
+  dateUploaded DateTime     @default(now())
+  dateEdited   DateTime?    @updatedAt
+}
+
+enum ProjectType {
+  YouTube
+  GitHub
+}
+
+model Image {
+  id             String         @id @unique @default(cuid())
+  title          String
+  tags           ImageTag[]
+  collections    Collection[]
+  fileName       String
+  filePath       String
+  fileExtension  ImageExtension
+  fileSize       Float
+  fileDimensionX Float
+  fileDimensionY Float
+  dateCreated    DateTime?
+  dateUploaded   DateTime       @default(now())
+  dateEdited     DateTime?      @updatedAt
+}
+
+model ImageTag {
+  id     String  @id @unique @default(cuid())
+  title  String
+  images Image[]
+}
+
+enum ImageExtension {
+  PNG
+  JPG
+  JPEG
+  GIF
+}
+
+model Collection {
+  id     String  @id @unique @default(cuid())
+  title  String
+  images Image[]
+}
