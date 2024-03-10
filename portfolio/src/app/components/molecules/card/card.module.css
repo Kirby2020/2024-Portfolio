@@ -7,13 +7,6 @@
   border-radius: var(--border-radius-card);
 }
 
-.cardHeader {
-  background-color: var(--card-header-background-color);
-  border-top-left-radius: var(--border-radius-card);
-  border-top-right-radius: var(--border-radius-card);
-  padding: 2rem;
-}
-
 .cardFooter {
   background-color: var(--card-footer-background-color);
   padding: 3rem 2rem;
