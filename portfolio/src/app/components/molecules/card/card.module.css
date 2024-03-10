@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--card-background-color);
+  height: 50rem;
+  border-radius: var(--border-radius-card);
+}
+
+.cardHeader {
+  background-color: var(--card-header-background-color);
+  border-top-left-radius: var(--border-radius-card);
+  border-top-right-radius: var(--border-radius-card);
+  padding: 2rem;
+}
+
+.cardFooter {
+  background-color: var(--card-footer-background-color);
+  padding: 3rem 2rem;
+  margin-top: auto;
+  border-bottom-left-radius: var(--border-radius-card);
+  border-bottom-right-radius: var(--border-radius-card);
+  text-align: center;
+}
+
+.cardFooter h3 {
+  margin-bottom: 2rem;
+}
