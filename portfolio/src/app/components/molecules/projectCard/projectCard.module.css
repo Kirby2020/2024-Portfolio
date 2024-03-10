@@ -1,0 +1,17 @@
+.button {
+  transition: background-color 0.2s ease;
+  display: block;
+  background-color: var(--button-color);
+  padding: 1rem 2rem;
+  width: fit-content;
+  margin-left: auto;
+  border-top-right-radius: var(--border-radius-card);
+  border-bottom-left-radius: var(--border-radius-card);
+}
+
+.button:hover,
+.button:active,
+.button:focus-within {
+  transition: background-color 0.2s ease;
+  background-color: var(--accent-color-light);
+}
