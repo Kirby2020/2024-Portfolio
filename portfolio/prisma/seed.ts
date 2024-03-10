@@ -16,7 +16,7 @@ async function generateProjects() {
                 id: id,
                 title: id,
                 description: "Description " + id,
-                previewUrl: "/images/Nakiri Ayame - Hiasobi 9.png",
+                previewUrl: "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/102978_289999.webp",
                 url: "#",
                 type: i % 2 == 0 ? "GitHub" : "YouTube"
             }
