@@ -8,7 +8,7 @@ async function main() {
 
 async function generateProjects() {
     for (let i = 0; i < 10; i++) {
-        const id = "Project " + i;
+        const id = "Project_" + i;
         const project = await prisma.project.upsert({
             where: { id: id},
             update: {},
