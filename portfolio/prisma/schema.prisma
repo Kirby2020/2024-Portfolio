@@ -47,7 +47,7 @@ model Image {
 }
 
 model ImageTag {
-  id     String  @id @unique @default(cuid())
+  id     Int     @id @unique @default(autoincrement())
   title  String
   images Image[]
 }
