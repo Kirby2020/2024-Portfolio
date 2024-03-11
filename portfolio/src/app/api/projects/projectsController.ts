@@ -1,25 +1,22 @@
+"use server";
+
+import prisma from "@/app/lib/prismaClient";
 import { Project } from "@prisma/client";
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL + "/api/projects";
+const PAGE_SIZE = 100;
 
 export async function getProjects(): Promise<Project[]> {
-  console.log("fetching projects from " + BASE_URL);
-  const res = await fetch(BASE_URL);
+  const projects = await prisma.project.findMany({
+    take: PAGE_SIZE,
+  });
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
-  }
-
-  return res.json();
+  return projects;
 }
 
-export async function getProject(id: string): Promise<Project> {
-  const res = await fetch(BASE_URL + "/" + id);
+export async function getProject(id: string): Promise<Project | null> {
+  const project = await prisma.project.findFirst({
+    where: { id: id },
+  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
+  return project;
 }

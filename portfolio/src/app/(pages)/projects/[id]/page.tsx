@@ -3,6 +3,7 @@ import { getProject } from "@/app/api/projects/projectsController";
 import PageHeader from "@/app/components/molecules/pageHeader/pageHeader";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 interface Props {
   params: {
@@ -12,6 +13,10 @@ interface Props {
 
 export default async function Project({ params }: Props) {
   const project = await getProject(params.id);
+
+  if (!project) {
+    redirect("./");
+  }
 
   const callToActionText = project.type
     ? "View on " + project.type
