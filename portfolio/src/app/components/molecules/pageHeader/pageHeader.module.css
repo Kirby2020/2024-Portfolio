@@ -1,9 +1,13 @@
+.pageHeader {
+    margin-bottom: 10rem;
+}
+
 .pageHeader div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 60vw;
-    min-height: 20rem;
+    min-height: 10rem;
 }
 
 .pageHeader p {

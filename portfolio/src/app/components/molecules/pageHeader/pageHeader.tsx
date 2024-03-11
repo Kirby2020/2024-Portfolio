@@ -2,7 +2,7 @@ import styles from "./pageHeader.module.css";
 import clsx from "clsx";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
   alignment?: "left" | "center" | "right";
 }
