@@ -8,7 +8,7 @@ async function main() {
 
 async function generateProjects() {
     for (let i = 0; i < 10; i++) {
-        const id = "Project " + i;
+        const id = "Project_" + i;
         const project = await prisma.project.upsert({
             where: { id: id},
             update: {},
@@ -16,7 +16,7 @@ async function generateProjects() {
                 id: id,
                 title: id,
                 description: "Description " + id,
-                previewUrl: "/images/Nakiri Ayame - Hiasobi 9.png",
+                previewUrl: "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/102978_289999.webp",
                 url: "#",
                 type: i % 2 == 0 ? "GitHub" : "YouTube"
             }

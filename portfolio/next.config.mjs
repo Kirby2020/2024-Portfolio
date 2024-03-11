@@ -1,4 +1,19 @@
+import dotenvExpand from "dotenv-expand";
+
+dotenvExpand.expand({ parsed: { ...process.env } });
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "k41jfyz0rmi8ju7o.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/**"
+      }
+    ]
+  }
+};
 
 export default nextConfig;

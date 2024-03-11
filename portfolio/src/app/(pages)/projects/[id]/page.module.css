@@ -1,0 +1,41 @@
+.project {
+
+}
+
+.projectInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.projectDescription {
+  min-width: 50rem;
+  margin-right: 2rem;
+}
+
+.projectDescription h3 {
+  margin-bottom: 2rem;
+}
+
+.projectImage {
+  position: relative;
+}
+
+.projectImage img {
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 1280px) {
+  .projectInfo {
+    flex-direction: column-reverse;
+  }
+
+  .projectDescription {
+    margin-right: 0;
+    margin-top: 2rem;
+    min-width: auto;
+  }
+
+  .projectImage {
+    
+  }
+}

@@ -1,0 +1,35 @@
+.pageHeader {
+    margin-bottom: 10rem;
+}
+
+.pageHeader div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60vw;
+    min-height: 10rem;
+}
+
+.pageHeader p {
+    margin: 3rem 0;
+}
+
+.left {
+    align-items: start;
+    text-align: start;
+}
+
+.center {
+    align-items: center;
+    text-align: center;
+}
+
+.right {
+    align-items: end;
+    text-align: end;
+}
+
+.separator {
+    border: 1px solid var(--accent-color);
+    width: 60%;
+}

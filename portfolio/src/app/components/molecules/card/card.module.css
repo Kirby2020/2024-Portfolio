@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--card-background-color);
+  height: 50rem;
+  border-radius: var(--border-radius-card);
+  overflow: hidden;
+}
+
+.cardHeader {
+  z-index: 10;
+}
+
+.cardFooter {
+  background-color: var(--card-footer-background-color-muted);
+  padding: 3rem 2rem;
+  margin-top: auto;
+  border-bottom-left-radius: var(--border-radius-card);
+  border-bottom-right-radius: var(--border-radius-card);
+  text-align: center;
+  z-index: 10;
+}
+
+.cardFooter h3 {
+  margin-bottom: 2rem;
+}
