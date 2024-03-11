@@ -8,7 +8,7 @@ export async function getProjects(): Promise<Project[]> {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data: " + res.json());
+    throw new Error("Failed to fetch data: " + res.body);
   }
 
   return res.json();
