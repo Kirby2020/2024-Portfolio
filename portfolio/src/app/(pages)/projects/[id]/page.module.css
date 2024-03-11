@@ -21,8 +21,7 @@
 }
 
 .projectImage img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 1280px) {
