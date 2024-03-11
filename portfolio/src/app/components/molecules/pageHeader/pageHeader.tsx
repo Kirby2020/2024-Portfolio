@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 interface Props {
   children: React.ReactNode;
-  title: String;
+  title: string;
   alignment?: "left" | "center" | "right";
 }
 
