@@ -1,3 +1,7 @@
+.projectCard {
+   height: 60rem;
+}
+
 .button {
   transition: background-color 0.2s ease;
   display: block;
