@@ -1,7 +1,7 @@
+import ImageContainer from "@/app/components/atoms/imageContainer/imageContainer";
 import styles from "./page.module.css";
 import { getProject } from "@/app/api/projects/projectsController";
 import PageHeader from "@/app/components/molecules/pageHeader/pageHeader";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -33,9 +33,7 @@ export default async function Project({ params }: Props) {
           <h3>Description</h3>
           <p>{project.description}</p>
         </div>
-        <div className={styles.projectImage}>
-          <img src={project.previewUrl} alt={project.id} />
-        </div>
+        <ImageContainer src={project.previewUrl} alt={project.id} />
       </div>
     </div>
   );

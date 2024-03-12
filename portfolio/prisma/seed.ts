@@ -1,35 +1,103 @@
-import { PrismaClient } from "@prisma/client";
+import { ImageExtension, ImageTag, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const imageUrls = [
+  "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/102978_289999.webp",
+  "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/24hEb5vDPEXeiq5NMLcgetOkdVhuFQI7aHoGdJQa6Z8.png",
+  "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/692628_180335.webp",
+  "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/EfdP1_uU0AIT5D1.jpg",
+  "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/__nakiri_ayame_hololive_drawn_by_agibe__aa879c5fc0e69cc4ec247341241ee501.png",
+];
+
+async function generateImageTags() {
+  await prisma.imageTag.createMany({
+    data: [
+      { title: "smile" },
+      { title: "vTuber" },
+      { title: "drawing" },
+      { title: "character" },
+      { title: "anime" },
+    ],
+  });
+}
+
 async function main() {
-    generateProjects()
+  generateProjects();
+
+  generateImageTags();
+
+  generateCollection("Collection 1", 3);
+  generateCollection("Collection 2", 2);
+  generateCollection("Collection 3", 5);
 }
 
 async function generateProjects() {
-    for (let i = 0; i < 10; i++) {
-        const id = "Project_" + i;
-        const project = await prisma.project.upsert({
-            where: { id: id},
-            update: {},
-            create: {
-                id: id,
-                title: id,
-                description: "Description " + id,
-                previewUrl: "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/102978_289999.webp",
-                url: "#",
-                type: i % 2 == 0 ? "GitHub" : "YouTube"
-            }
-        })
-    }
+  for (let i = 0; i < 10; i++) {
+    const id = "Project_" + i;
+    const randomImageIndex = i % imageUrls.length;
+    const project = await prisma.project.upsert({
+      where: { id: id },
+      update: {},
+      create: {
+        id: id,
+        title: id,
+        description: "Description " + id,
+        previewUrl: imageUrls[randomImageIndex],
+        url: "#",
+        type: i % 2 == 0 ? "GitHub" : "YouTube",
+      },
+    });
+  }
+}
+
+async function generateCollection(title: string, numImages: number) {
+  const imageIds = [];
+
+  for (let i = 0; i < numImages; i++) {
+    const image = await generateImage(i);
+    imageIds.push(image.id);
+  }
+
+  const collection = await prisma.collection.create({
+    data: {
+      title: title,
+      images: { connect: imageIds.map((id) => ({ id })) },
+    },
+  });
+}
+
+async function generateImage(index: number) {
+  const imageUrl = imageUrls[index % imageUrls.length];
+  const tags = await getRandomTags();
+  const image = await prisma.image.create({
+    data: {
+      title: "Image " + (index + 1),
+      fileName: imageUrl.split("/").pop()!,
+      filePath: imageUrl,
+      fileExtension: ImageExtension.PNG,
+      fileDimensionX: Math.random() * 1000,
+      fileDimensionY: Math.random() * 1000,
+      fileSize: Math.random() * 10,
+      tags: { connect: tags.map((tag) => ({ id: tag.id })) },
+    },
+  });
+  return image;
+}
+
+async function getRandomTags() {
+  const imageTags = await prisma.imageTag.findMany();
+  const shuffledTags = imageTags.sort(() => Math.random() - 0.5);
+  const numTags = Math.floor(Math.random() * (shuffledTags.length + 1));
+  return shuffledTags.slice(0, numTags);
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
