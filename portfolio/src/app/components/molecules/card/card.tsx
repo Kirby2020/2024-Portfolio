@@ -4,7 +4,6 @@ import styles from "./card.module.css";
 interface Props {
   title: string;
   description?: string;
-  url: string;
   previewImageUrl: string;
   children?: React.ReactNode;
 }
