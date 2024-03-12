@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.aboutMe {
+  width: 80rem;
+  margin-bottom: 4rem;
+  margin-right: 4rem;
+}
+
+.aboutMe p {
+  margin: 1rem 0;
+  line-height: 3rem;
+}
