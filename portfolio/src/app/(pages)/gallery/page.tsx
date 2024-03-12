@@ -5,7 +5,6 @@ import GridLayout from "@/app/components/templates/gridLayout/gridLayout";
 
 export default async function Gallery() {
   const collections = await getCollections();
-  console.log(collections);
 
   return (
     <>
