@@ -14,9 +14,9 @@ export default function Header() {
           <Link href="/about-me">About Me</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/login">Login</Link>
+          <Link href="/api/auth/login">Login</Link>
         </ul>
       </nav>
     </header>
-  )
+  );
 }
