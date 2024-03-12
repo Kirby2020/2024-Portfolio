@@ -2,8 +2,9 @@ import { getProjects } from "@/app/api/projects/projectsController";
 import PageHeader from "@/app/components/molecules/pageHeader/pageHeader";
 import ProjectCard from "@/app/components/molecules/projectCard/projectCard";
 import GridLayout from "@/app/components/templates/gridLayout/gridLayout";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export default async function Projects() {
+async function Projects() {
   const projects = await getProjects();
 
   return (
@@ -21,3 +22,5 @@ export default async function Projects() {
     </>
   );
 }
+
+export default withPageAuthRequired(Projects, { returnTo: "/projects" });
