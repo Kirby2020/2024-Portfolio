@@ -27,3 +27,7 @@
     transition: color 0.2s ease;
     color: var(--accent-color);
 }
+
+.user {
+    margin-left: auto;
+}

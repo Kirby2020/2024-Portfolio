@@ -1,7 +1,10 @@
 import Link from "next/link";
 import styles from "./header.module.css";
+import { getSession } from "@auth0/nextjs-auth0";
+import Image from "next/image";
+import HeaderUser from "../../atoms/headerUser/headerUser";
 
-export default function Header() {
+export default async function Header() {
   return (
     <header className={styles.header}>
       <nav>
@@ -14,9 +17,11 @@ export default function Header() {
           <Link href="/about-me">About Me</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/api/auth/login">Login</Link>
         </ul>
       </nav>
+      <div className={styles.user}>
+        <HeaderUser></HeaderUser>
+      </div>
     </header>
   );
 }

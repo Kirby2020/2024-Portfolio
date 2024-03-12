@@ -11,6 +11,12 @@ const nextConfig = {
         hostname: "k41jfyz0rmi8ju7o.public.blob.vercel-storage.com",
         port: "",
         pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**"
       }
     ]
   }

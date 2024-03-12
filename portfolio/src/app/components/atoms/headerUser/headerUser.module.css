@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.userImage {
+  border-radius: var(--border-radius-card);
+}

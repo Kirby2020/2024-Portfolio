@@ -23,15 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={kodchasan.className}>
-        <Header />
+      <UserProvider>
+        <body className={kodchasan.className}>
+          <Header />
 
-        <UserProvider>
           <main>{children}</main>
-        </UserProvider>
 
-        <footer></footer>
-      </body>
+          <footer></footer>
+        </body>
+      </UserProvider>
     </html>
   );
 }
