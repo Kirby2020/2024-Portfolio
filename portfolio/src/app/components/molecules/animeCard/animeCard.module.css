@@ -1,0 +1,12 @@
+.animeCard {
+  height: 50rem;
+}
+
+.animeCardHeader {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background-color: var(--card-header-background-color-muted);
+  height: 5rem;
+  padding: 2rem;
+}
