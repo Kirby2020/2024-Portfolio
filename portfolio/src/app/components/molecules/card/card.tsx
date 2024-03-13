@@ -21,7 +21,7 @@ export default function Card(props: Props) {
       )}
       <div className={styles.cardFooter}>
         <h3>{props.title}</h3>
-        <p>{props.description}</p>
+        {props.description && <p>{props.description}</p>}
       </div>
       <Image
         src={props.previewImageUrl}

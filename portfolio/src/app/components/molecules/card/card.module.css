@@ -24,6 +24,6 @@
   z-index: 10;
 }
 
-.cardFooter h3 {
-  margin-bottom: 2rem;
+.cardFooter p {
+  margin-top: 2rem;
 }
