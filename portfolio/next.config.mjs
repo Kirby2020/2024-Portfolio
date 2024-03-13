@@ -11,6 +11,18 @@ const nextConfig = {
         hostname: "k41jfyz0rmi8ju7o.public.blob.vercel-storage.com",
         port: "",
         pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "s4.anilist.co",
+        port: "",
+        pathname: "/file/anilistcdn/media/anime/cover/**"
+      },
+      {
+        protocol: "https",
+        hostname: "s4.anilist.co",
+        port: "",
+        pathname: "/file/anilistcdn/media/anime/banner/**"
       }
     ]
   }

@@ -5,10 +5,15 @@ interface Props {
   title: string;
   description?: string;
   previewImageUrl: string;
+  previewImageFit?: "contain" | "cover";
   children?: React.ReactNode;
 }
 
 export default function Card(props: Props) {
+  const previewImageFit = props.previewImageFit
+    ? props.previewImageFit
+    : "contain";
+
   return (
     <div className={styles.card}>
       {props.children && (
@@ -16,14 +21,14 @@ export default function Card(props: Props) {
       )}
       <div className={styles.cardFooter}>
         <h3>{props.title}</h3>
-        <p>{props.description}</p>
+        {props.description && <p>{props.description}</p>}
       </div>
       <Image
         src={props.previewImageUrl}
         alt={`${props.title} image`}
         fill
         style={{
-          objectFit: "contain",
+          objectFit: previewImageFit,
         }}
       />
     </div>
