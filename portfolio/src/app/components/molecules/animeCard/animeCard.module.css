@@ -4,7 +4,7 @@
 
 .animeCardHeader {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   background-color: var(--card-header-background-color-muted);
   height: 5rem;
