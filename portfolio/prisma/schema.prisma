@@ -65,3 +65,11 @@ model Collection {
   images     Image[]
   previewUrl String  @default("https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/EfdP1_uU0AIT5D1.jpg")
 }
+
+model Game {
+  id         Int    @id @unique @default(autoincrement())
+  game_id    Int    @unique
+  name       String
+  previewUrl String
+  url        String
+}

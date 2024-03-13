@@ -30,6 +30,8 @@ async function main() {
   generateCollection("Collection 1", 3);
   generateCollection("Collection 2", 2);
   generateCollection("Collection 3", 5);
+
+  generateGames();
 }
 
 async function generateProjects() {
@@ -90,6 +92,23 @@ async function getRandomTags() {
   const shuffledTags = imageTags.sort(() => Math.random() - 0.5);
   const numTags = Math.floor(Math.random() * (shuffledTags.length + 1));
   return shuffledTags.slice(0, numTags);
+}
+
+async function generateGames() {
+  for (let i = 0; i < 5; i++) {
+    const id = i;
+    const game = await prisma.game.upsert({
+      where: { id: id },
+      update: {},
+      create: {
+        game_id: id,
+        name: "Game title",
+        previewUrl:
+          "https://images.igdb.com/igdb/image/upload/t_1080p/co2h5a.jpg",
+        url: "https://www.igdb.com/games/megadimension-neptunia-vii",
+      },
+    });
+  }
 }
 
 main()
