@@ -3,12 +3,13 @@
   --secondary-color: #2D2E43;
   --tertiary-color: #3E3F5A;
   --tertiary-color-muted: rgba(62, 63, 90, 0.85);
+  --tertiary-color-muted-strong: rgba(62, 63, 90, 0.65);
 
   --background-color: var(--primary-color);
   --header-background-color: var(--secondary-color);
   --card-background-color: var(--secondary-color);
   --card-header-background-color: var(--tertiary-color);
-  --card-header-background-color-muted: var(--tertiary-color-muted);
+  --card-header-background-color-muted: var(--tertiary-color-muted-strong);
   --card-footer-background-color: var(--tertiary-color);
   --card-footer-background-color-muted: var(--tertiary-color-muted);
 
