@@ -23,6 +23,12 @@ const nextConfig = {
         hostname: "s4.anilist.co",
         port: "",
         pathname: "/file/anilistcdn/media/anime/banner/**"
+      },
+      {
+        protocol: "https",
+        hostname: "images.igdb.com",
+        port: "",
+        pathname: "/igdb/image/upload/**"
       }
     ]
   }
