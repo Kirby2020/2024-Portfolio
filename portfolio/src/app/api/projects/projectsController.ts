@@ -1,9 +1,6 @@
-"use server";
-
 import prisma from "@/app/lib/prismaClient";
 import { Project } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import { cache } from "react";
 
 const PAGE_SIZE = 100;
 
