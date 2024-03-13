@@ -2,11 +2,12 @@
 
 import prisma from "@/app/lib/prismaClient";
 import { Project } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { cache } from "react";
 
 const PAGE_SIZE = 100;
 
-export const getProjects = cache(async (): Promise<Project[]> => {
+export async function getProjects(): Promise<Project[]> {
   let projects: Project[] = [];
   try {
     projects = await prisma.project.findMany({
@@ -15,9 +16,9 @@ export const getProjects = cache(async (): Promise<Project[]> => {
   } catch (e) {
     console.log("Error fetching projects: " + e);
   }
-
+  revalidatePath("/projects");
   return projects;
-});
+}
 
 export async function getProject(id: string): Promise<Project | null> {
   let project: Project | null = null;
