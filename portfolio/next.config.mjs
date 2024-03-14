@@ -29,7 +29,13 @@ const nextConfig = {
         hostname: "images.igdb.com",
         port: "",
         pathname: "/igdb/image/upload/**"
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        port: "",
+        pathname: `/v0/b/${process.env.FIREBASE_STORAGE_BUCKET}/o/**`
+      },
     ]
   }
 };
