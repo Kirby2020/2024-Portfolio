@@ -1,0 +1,29 @@
+.container h2 {
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+}
+
+.container h3 {
+  margin: 2rem 0;
+}
+
+.container h4 {
+  margin-bottom: 1rem;
+}
+
+.container p {
+  margin-bottom: 2rem;
+}
+
+.container strong, .container span, .container small, .container h4 {
+  font-size: var(--font-size-text);
+}
+
+.container ul {
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+}
+
+.container li {
+  margin: 1rem 0;
+}
