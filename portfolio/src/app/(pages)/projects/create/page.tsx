@@ -1,47 +1,62 @@
-import Button from "@/app/components/atoms/button/button";
+"use client";
+
+import { useState } from "react";
 import styles from "./page.module.css";
-import { uploadImage } from "@/app/lib/firebase/images";
-import { createProject } from "@/app/api/projects/projectsController";
-import { ProjectType } from "@prisma/client";
-import { redirect } from "next/navigation";
+import { projectValidator } from "@/app/lib/zod/validateProject";
+import createProjectFromForm from "./action";
+import { Project, ProjectType } from "@prisma/client";
 
-//TODO: Cleanup validation
 export default function ProjectCreateForm() {
-  async function create(data: FormData) {
-    "use server";
-    const title = data.get("title")!.toString();
-    const description = data.get("description")!.toString();
-    const type = data.get("type")!.toString();
-    const url = data.get("url")!.toString();
-    const dateCreated = data.get("dateCreated")
-      ? new Date(data.get("dateCreated")!.toString()).toISOString()
-      : null;
-    const formImage = data.get("image") as File;
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
 
-    const imageUrl = await uploadImage(formImage);
+  async function clientAction(data: FormData) {
+    // Validate on client first
+    const newProject = {
+      title: data.get("title"),
+      type: data.get("type"),
+      description: data.get("description"),
+      url: data.get("url"),
+      dateCreated:
+        data.get("dateCreated") !== "" ? data.get("dateCreated") : undefined,
+    };
 
-    console.log("image uploaded: " + imageUrl);
+    const validatedProject = projectValidator.safeParse(newProject);
 
-    if (!imageUrl) return;
+    if (!validatedProject.success) {
+      console.log(validatedProject.error.issues);
+      const errors = validatedProject.error.issues.map(
+        (issue) => `${issue.path.join(",")}: ${issue.message}`
+      );
+      setErrorMessages(errors);
+      return;
+    }
 
-    const project = await createProject({
-      title: title,
-      description: description,
-      previewUrl: imageUrl,
-      url: url,
-      type: ProjectType.GitHub,
-      dateCreated: dateCreated,
-    });
+    // Validate on server
+    const response = await createProjectFromForm(data);
 
-    if (project) {
-      redirect("./");
+    if (response?.error) {
+      setErrorMessages(response.error);
+      return;
     }
   }
 
   return (
-    <form className={styles.form} action={create}>
+    <form className={styles.form} action={clientAction}>
+      {errorMessages.length > 0 && (
+        <div className={styles.errorMessages}>
+          {errorMessages.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
+        </div>
+      )}
       <input type="text" placeholder="Title" name="title" required />
-      <input type="text" placeholder="Type" name="type" />
+      <select name="type" required>
+        {Object.values(ProjectType).map((type) => (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
       <textarea
         placeholder="Description"
         name="description"
@@ -51,9 +66,7 @@ export default function ProjectCreateForm() {
       <input type="text" placeholder="URL" name="url" required />
       <input type="date" name="dateCreated" />
       <input type="file" name="image" required />
-      <button type="submit">
-        <Button>Submit</Button>
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

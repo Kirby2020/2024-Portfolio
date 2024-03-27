@@ -22,3 +22,16 @@
 .form textarea {
   width: 100%;
 }
+
+.errorMessages {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 1px solid brown;
+  border-radius: var(--border-radius-card);
+}
+
+.errorMessages p {
+  line-height: 3rem;
+  color: brown;
+}

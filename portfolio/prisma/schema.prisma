@@ -14,18 +14,19 @@ datasource db {
 }
 
 model Project {
-  id           String       @id @unique @default(cuid())
+  id           String      @id @unique @default(cuid())
   title        String
-  type         ProjectType?
+  type         ProjectType @default(Other)
   description  String
   url          String
   previewUrl   String
   dateCreated  DateTime?
-  dateUploaded DateTime     @default(now())
-  dateEdited   DateTime?    @updatedAt
+  dateUploaded DateTime    @default(now())
+  dateEdited   DateTime    @updatedAt
 }
 
 enum ProjectType {
+  Other
   YouTube
   GitHub
 }
@@ -43,7 +44,7 @@ model Image {
   fileDimensionY Float
   dateCreated    DateTime?
   dateUploaded   DateTime       @default(now())
-  dateEdited     DateTime?      @updatedAt
+  dateEdited     DateTime       @updatedAt
 }
 
 model ImageTag {

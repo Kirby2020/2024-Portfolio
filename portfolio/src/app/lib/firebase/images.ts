@@ -1,3 +1,5 @@
+import { firebaseApp } from "./firebase";
+
 import {
   ref,
   uploadBytes,
@@ -6,9 +8,9 @@ import {
   StorageError,
 } from "firebase/storage";
 
-const firebaseStorage = getStorage();
-
 export async function uploadImage(image: File): Promise<string | null> {
+  const firebaseStorage = getStorage(firebaseApp);
+
   const imageName = image.lastModified + "_" + image.name;
   const firebaseImagesRef = ref(firebaseStorage, "images/" + imageName);
 
