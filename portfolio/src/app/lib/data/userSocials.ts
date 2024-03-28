@@ -8,7 +8,7 @@ const userSocials: SocialIcon[] = [
   {
     name: "LinkedIn",
     imageUrl: "/images/linkedin_logo.png",
-    url: "#",
+    url: "",
   },
   {
     name: "GitHub",
@@ -18,7 +18,7 @@ const userSocials: SocialIcon[] = [
   {
     name: "YouTube",
     imageUrl: "/images/youtube_logo.png",
-    url: "https://www.youtube.com/channel/UCu61nUcXdIW1b-qdL2m-Qkw/",
+    url: "",
   },
   {
     name: "Twitch",
