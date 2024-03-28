@@ -1,7 +1,6 @@
-"use server";
-
 import prisma from "@/app/lib/prismaClient";
-import { Project } from "@prisma/client";
+import { Prisma, Project } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 const PAGE_SIZE = 100;
 
@@ -14,7 +13,7 @@ export async function getProjects(): Promise<Project[]> {
   } catch (e) {
     console.log("Error fetching projects: " + e);
   }
-
+  revalidatePath("/projects");
   return projects;
 }
 
@@ -29,4 +28,20 @@ export async function getProject(id: string): Promise<Project | null> {
   }
 
   return project;
+}
+
+export async function createProject(
+  data: Prisma.ProjectCreateInput
+): Promise<Project | null> {
+  try {
+    const project = await prisma.project.create({
+      data: {
+        ...data,
+      },
+    });
+    return project;
+  } catch (e) {
+    console.error("Error creating project:", e);
+    throw e;
+  }
 }

@@ -7,7 +7,7 @@ const kodchasan = Kodchasan({
   weight: ["300", "500", "700"],
   style: "normal",
   subsets: ["latin"],
-  fallback: ["Inter"]
+  fallback: ["Inter"],
 });
 
 export const metadata: Metadata = {
@@ -25,13 +25,9 @@ export default function RootLayout({
       <body className={kodchasan.className}>
         <Header />
 
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
 
-        <footer>
-
-        </footer>
+        <footer></footer>
       </body>
     </html>
   );

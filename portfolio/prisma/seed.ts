@@ -8,6 +8,9 @@ const imageUrls = [
   "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/692628_180335.webp",
   "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/EfdP1_uU0AIT5D1.jpg",
   "https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/__nakiri_ayame_hololive_drawn_by_agibe__aa879c5fc0e69cc4ec247341241ee501.png",
+
+  "https://firebasestorage.googleapis.com/v0/b/radiant-rookery-417208.appspot.com/o/images%2FNakiri%20Ayame%20-%20KING%2023.png?alt=media&token=67637f2e-3e73-4480-a147-513cecc57f7e",
+  "https://firebasestorage.googleapis.com/v0/b/radiant-rookery-417208.appspot.com/o/images%2FPekora%20%26%20Ihora%20-%20The%20world%20is%20in%20love%201.png?alt=media&token=69812796-508e-4551-b9e3-e9da071327c8",
 ];
 
 async function generateImageTags() {
