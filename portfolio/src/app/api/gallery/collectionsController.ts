@@ -2,6 +2,7 @@
 
 import prisma from "@/app/lib/prismaClient";
 import { Collection, Prisma } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export async function getCollections(
   limit: number = 10
@@ -41,10 +42,72 @@ export async function getImageWithTags(id: string) {
 
 export type ImageWithTags = Prisma.PromiseReturnType<typeof getImageWithTags>;
 
-export async function createCollection(collection: Collection) {
+export async function createEmptyCollection(title: string) {
   const newCollection = await prisma.collection.create({
-    data: collection,
+    data: {
+      title: title,
+    },
   });
 
   return newCollection;
+}
+
+export async function createImage(fileName: string, filePath: string) {
+  const newImage = await prisma.image.create({
+    data: {
+      fileName: fileName,
+      filePath: filePath,
+    },
+  });
+
+  return newImage;
+}
+
+export async function addImageToCollection(
+  collectionId: string,
+  imageId: string
+) {
+  const collection = await prisma.collection.update({
+    where: { id: collectionId },
+    data: {
+      images: {
+        connect: {
+          id: imageId,
+        },
+      },
+    },
+  });
+
+  await updateCollectionPreview(collectionId);
+
+  return collection;
+}
+
+async function updateCollectionPreview(collectionId: string) {
+  const images = await prisma.collection.findFirst({
+    where: { id: collectionId },
+    include: {
+      images: {
+        orderBy: {
+          dateUploaded: "desc",
+        },
+        take: 1,
+      },
+    },
+  });
+
+  if (!images) {
+    return;
+  }
+
+  const previewUrl = images.images[0].filePath;
+
+  await prisma.collection.update({
+    where: { id: collectionId },
+    data: {
+      previewUrl: previewUrl,
+    },
+  });
+
+  revalidatePath(`/gallery/collections/${collectionId}`);
 }

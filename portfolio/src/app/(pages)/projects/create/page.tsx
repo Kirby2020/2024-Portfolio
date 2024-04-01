@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { projectValidator } from "@/app/lib/zod/validateProject";
 import createProjectFromForm from "./action";
 import { Project, ProjectType } from "@prisma/client";
+import Form from "@/app/components/organisms/form/page";
 
 export default function ProjectCreateForm() {
   const [errorMessages, setErrorMessages] = useState<string[]>([]);
@@ -41,14 +42,7 @@ export default function ProjectCreateForm() {
   }
 
   return (
-    <form className={styles.form} action={clientAction}>
-      {errorMessages.length > 0 && (
-        <div className={styles.errorMessages}>
-          {errorMessages.map((message, index) => (
-            <p key={index}>{message}</p>
-          ))}
-        </div>
-      )}
+    <Form onSubmit={clientAction} errors={errorMessages}>
       <input type="text" placeholder="Title" name="title" required />
       <select name="type" required>
         {Object.values(ProjectType).map((type) => (
@@ -67,6 +61,6 @@ export default function ProjectCreateForm() {
       <input type="date" name="dateCreated" />
       <input type="file" name="image" required />
       <button type="submit">Submit</button>
-    </form>
+    </Form>
   );
 }
