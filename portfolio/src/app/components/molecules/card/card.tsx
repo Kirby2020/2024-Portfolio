@@ -4,7 +4,7 @@ import styles from "./card.module.css";
 interface Props {
   title: string;
   description?: string;
-  previewImageUrl: string;
+  previewImageUrl: string | null;
   previewImageFit?: "contain" | "cover";
   children?: React.ReactNode;
 }
@@ -23,14 +23,16 @@ export default function Card(props: Props) {
         <h3>{props.title}</h3>
         {props.description && <p>{props.description}</p>}
       </div>
-      <Image
-        src={props.previewImageUrl}
-        alt={`${props.title} image`}
-        fill
-        style={{
-          objectFit: previewImageFit,
-        }}
-      />
+      {props.previewImageUrl && (
+        <Image
+          src={props.previewImageUrl}
+          alt={`${props.title} image`}
+          fill
+          style={{
+            objectFit: previewImageFit,
+          }}
+        />
+      )}
     </div>
   );
 }
