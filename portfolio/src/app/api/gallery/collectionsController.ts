@@ -40,3 +40,11 @@ export async function getImageWithTags(id: string) {
 }
 
 export type ImageWithTags = Prisma.PromiseReturnType<typeof getImageWithTags>;
+
+export async function createCollection(collection: Collection) {
+  const newCollection = await prisma.collection.create({
+    data: collection,
+  });
+
+  return newCollection;
+}
