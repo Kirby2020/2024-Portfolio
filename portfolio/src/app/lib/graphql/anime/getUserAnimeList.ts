@@ -34,6 +34,9 @@ export async function getUserAnimeLists(username: string) {
       Accept: "application/json",
     },
     body: JSON.stringify({ query: query }),
+    next: {
+      revalidate: 3600 * 24,
+    },
   };
 
   try {
