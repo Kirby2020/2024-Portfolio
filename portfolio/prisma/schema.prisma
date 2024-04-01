@@ -32,19 +32,14 @@ enum ProjectType {
 }
 
 model Image {
-  id             String         @id @unique @default(cuid())
-  title          String
-  tags           ImageTag[]
-  collections    Collection[]
-  fileName       String
-  filePath       String
-  fileExtension  ImageExtension
-  fileSize       Float
-  fileDimensionX Float
-  fileDimensionY Float
-  dateCreated    DateTime?
-  dateUploaded   DateTime       @default(now())
-  dateEdited     DateTime       @updatedAt
+  id           String       @id @unique @default(cuid())
+  tags         ImageTag[]
+  collections  Collection[]
+  fileName     String
+  filePath     String
+  dateCreated  DateTime?
+  dateUploaded DateTime     @default(now())
+  dateEdited   DateTime     @updatedAt
 }
 
 model ImageTag {
@@ -64,7 +59,7 @@ model Collection {
   id         String  @id @unique @default(cuid())
   title      String
   images     Image[]
-  previewUrl String  @default("https://k41jfyz0rmi8ju7o.public.blob.vercel-storage.com/images/EfdP1_uU0AIT5D1.jpg")
+  previewUrl String?
 }
 
 model Game {

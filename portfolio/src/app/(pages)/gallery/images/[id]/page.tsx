@@ -17,7 +17,7 @@ export default async function Image({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <PageHeader title={image.title}></PageHeader>
+      <PageHeader title={image.fileName}></PageHeader>
 
       <div className={styles.container}>
         <div className={styles.imageInfo}>
@@ -33,12 +33,6 @@ export default async function Image({ params }: { params: { id: string } }) {
           <div>
             <h3>Information</h3>
             <p>ID: {image.id}</p>
-            <p>Type: {image.fileExtension}</p>
-            <p>Size: {image.fileSize.toFixed(2)}</p>
-            <p>
-              Dimensions: {image.fileDimensionX.toFixed(2)} x{" "}
-              {image.fileDimensionY.toFixed(2)}
-            </p>
             <span className={styles.divider}></span>
             {image.dateUploaded && (
               <p>Uploaded on: {image.dateUploaded?.toLocaleString()}</p>
