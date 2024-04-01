@@ -18,6 +18,10 @@
     margin: 3rem 0;
 }
 
+.pageHeader a {
+    color: var(--accent-color);
+}
+
 .left {
     align-items: start;
     text-align: start;
