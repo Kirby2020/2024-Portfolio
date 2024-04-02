@@ -1,11 +1,10 @@
 "use client";
 
-import Form from "@/app/components/organisms/form/page";
 import { createEmptyCollection } from "@/app/api/gallery/collectionsController";
 import { redirect } from "next/navigation";
 
 export default function CollectionCreateForm() {
-  async function action(data: FormData) {
+  async function clientAction(data: FormData) {
     const title = data.get("title") as string;
 
     const collection = await createEmptyCollection(title);
@@ -16,9 +15,17 @@ export default function CollectionCreateForm() {
   }
 
   return (
-    <Form onSubmit={action} errors={[]}>
-      <input type="text" name="title" required minLength={5} maxLength={255} />
-      <input type="submit" value="Submit" />
-    </Form>
+    <div className="form">
+      <form action={clientAction}>
+        <input
+          type="text"
+          name="title"
+          required
+          minLength={5}
+          maxLength={255}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   );
 }

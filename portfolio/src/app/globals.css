@@ -81,3 +81,41 @@ input {
   letter-spacing: 2px;
   text-decoration: none;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin: auto;
+  padding: 4rem;
+}
+
+.form input {
+  width: 100%;
+  color: black;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.form input[type=file] {
+  color: var(--text-color);
+}
+
+.form textarea {
+  width: 100%;
+}
+
+.form-errors {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 1px solid brown;
+  border-radius: var(--border-radius-card);
+}
+
+.form-errors p {
+  line-height: 3rem;
+  color: brown;
+}

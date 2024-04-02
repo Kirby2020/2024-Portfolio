@@ -1,24 +1,26 @@
 "use client";
-import Form from "../page";
+
 import createImageFromForm from "./action";
 import { addImageToCollection } from "@/app/api/gallery/collectionsController";
 
-export default function UploadImageForm(props: { collectionId: number }) {
-  async function onSubmit(data: FormData) {
-    const image = await createImageFromForm(data);
+interface Props {
+  collectionId: number;
+}
 
+export default function UploadImageForm(props: Props) {
+  async function clientAction(data: FormData) {
+    const image = await createImageFromForm(data);
     if (!image) {
       return;
     }
-
     await addImageToCollection(props.collectionId, image.id);
   }
   return (
-    <>
-      <Form onSubmit={onSubmit} errors={[]}>
+    <div className="form">
+      <form action={clientAction}>
         <input type="file" name="image" accept="image/*" required />
         <input type="submit" value="Upload" />
-      </Form>
-    </>
+      </form>
+    </div>
   );
 }
