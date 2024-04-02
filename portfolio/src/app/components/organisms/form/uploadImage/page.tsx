@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Form from "../page";
 import createImageFromForm from "./action";
 import { addImageToCollection } from "@/app/api/gallery/collectionsController";
