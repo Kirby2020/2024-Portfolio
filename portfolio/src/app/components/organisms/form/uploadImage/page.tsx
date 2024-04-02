@@ -4,7 +4,7 @@ import Form from "../page";
 import createImageFromForm from "./action";
 import { addImageToCollection } from "@/app/api/gallery/collectionsController";
 
-export default function UploadImageForm(props: { collectionId: string }) {
+export default function UploadImageForm(props: { collectionId: number }) {
   async function onSubmit(data: FormData) {
     const image = await createImageFromForm(data);
 

@@ -13,12 +13,16 @@ export default async function Collection({
 }: {
   params: { id: string };
 }) {
-  const collection: CollectionWithImages = await getCollectionWithImages(
-    params.id
-  );
+  const id = parseInt(params.id);
+
+  if (isNaN(id)) {
+    redirect("/gallery");
+  }
+
+  const collection: CollectionWithImages = await getCollectionWithImages(id);
 
   if (!collection) {
-    redirect("./");
+    redirect("/gallery");
   }
 
   return (

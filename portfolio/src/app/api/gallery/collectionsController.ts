@@ -14,7 +14,7 @@ export async function getCollections(
   return collections;
 }
 
-export async function getCollectionWithImages(id: string) {
+export async function getCollectionWithImages(id: number) {
   const collection = await prisma.collection.findFirst({
     where: { id: id },
     include: {
@@ -29,7 +29,7 @@ export type CollectionWithImages = Prisma.PromiseReturnType<
   typeof getCollectionWithImages
 >;
 
-export async function getImageWithTags(id: string) {
+export async function getImageWithTags(id: number) {
   const image = await prisma.image.findFirst({
     where: { id: id },
     include: {
@@ -64,8 +64,8 @@ export async function createImage(fileName: string, filePath: string) {
 }
 
 export async function addImageToCollection(
-  collectionId: string,
-  imageId: string
+  collectionId: number,
+  imageId: number
 ) {
   const collection = await prisma.collection.update({
     where: { id: collectionId },
@@ -83,7 +83,7 @@ export async function addImageToCollection(
   return collection;
 }
 
-async function updateCollectionPreview(collectionId: string) {
+async function updateCollectionPreview(collectionId: number) {
   const images = await prisma.collection.findFirst({
     where: { id: collectionId },
     include: {

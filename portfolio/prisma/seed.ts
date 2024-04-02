@@ -35,15 +35,13 @@ async function main() {
 
 async function generateProjects() {
   for (let i = 0; i < 10; i++) {
-    const id = "Project_" + i;
     const randomImageIndex = i % imageUrls.length;
     const project = await prisma.project.upsert({
-      where: { id: id },
+      where: { id: i },
       update: {},
       create: {
-        id: id,
-        title: id,
-        description: "Description " + id,
+        title: "Project " + i,
+        description: "Description " + i,
         previewUrl: imageUrls[randomImageIndex],
         url: "#",
         type: i % 2 == 0 ? "GitHub" : "YouTube",

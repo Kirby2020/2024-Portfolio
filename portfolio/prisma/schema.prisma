@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Project {
-  id           String      @id @unique @default(cuid())
+  id           Int         @id @unique @default(autoincrement())
   title        String
   type         ProjectType @default(Other)
   description  String
@@ -32,7 +32,7 @@ enum ProjectType {
 }
 
 model Image {
-  id           String       @id @unique @default(cuid())
+  id           Int          @id @unique @default(autoincrement())
   tags         ImageTag[]
   collections  Collection[]
   fileName     String
@@ -56,7 +56,7 @@ enum ImageExtension {
 }
 
 model Collection {
-  id         String  @id @unique @default(cuid())
+  id         Int     @id @unique @default(autoincrement())
   title      String
   images     Image[]
   previewUrl String?
