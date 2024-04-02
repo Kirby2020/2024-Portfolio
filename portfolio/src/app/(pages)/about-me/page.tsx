@@ -6,7 +6,7 @@ export default function AboutMe() {
   return (
     <>
       <PageHeader title="About Me">
-        <p>Want to learn more about me? Then you&apos;re at the right place!</p>
+        Want to learn more about me? Then you&apos;re at the right place!
       </PageHeader>
 
       <div className={styles.container}>

@@ -9,8 +9,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Image({ params }: { params: { id: string } }) {
-  const image: ImageWithTags = await getImageWithTags(params.id);
-  console.log(image);
+  const id = parseInt(params.id);
+  if (isNaN(id)) {
+    redirect("./");
+  }
+
+  const image: ImageWithTags = await getImageWithTags(id);
+
   if (!image) {
     redirect("./");
   }
