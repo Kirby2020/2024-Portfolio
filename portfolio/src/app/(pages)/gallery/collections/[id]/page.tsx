@@ -6,23 +6,29 @@ import ImageCard from "@/app/components/molecules/imageCard/imageCard";
 import PageHeader from "@/app/components/molecules/pageHeader/pageHeader";
 import GridLayout from "@/app/components/templates/gridLayout/gridLayout";
 import { redirect } from "next/navigation";
+import UploadImageForm from "@/app/components/organisms/uploadImageForm/uploadImageForm";
 
 export default async function Collection({
   params,
 }: {
   params: { id: string };
 }) {
-  const collection: CollectionWithImages = await getCollectionWithImages(
-    params.id
-  );
+  const id = parseInt(params.id);
+
+  if (isNaN(id)) {
+    redirect("/gallery");
+  }
+
+  const collection: CollectionWithImages = await getCollectionWithImages(id);
 
   if (!collection) {
-    redirect("./");
+    redirect("/gallery");
   }
 
   return (
     <>
       <PageHeader alignment="center" title={collection.title}></PageHeader>
+      <UploadImageForm collectionId={id}></UploadImageForm>
       <GridLayout>
         {collection.images.map((image) => {
           return <ImageCard key={image.id} {...image}></ImageCard>;

@@ -12,7 +12,13 @@ interface Props {
 }
 
 export default async function Project({ params }: Props) {
-  const project = await getProject(params.id);
+  const id = parseInt(params.id);
+
+  if (isNaN(id)) {
+    redirect("./");
+  }
+
+  const project = await getProject(id);
 
   if (!project) {
     redirect("./");
@@ -33,7 +39,7 @@ export default async function Project({ params }: Props) {
           <h3>Description</h3>
           <p>{project.description}</p>
         </div>
-        <ImageContainer src={project.previewUrl} alt={project.id} />
+        <ImageContainer src={project.previewUrl} alt={project.title} />
       </div>
     </div>
   );

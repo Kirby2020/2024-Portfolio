@@ -17,7 +17,7 @@ export async function getProjects(): Promise<Project[]> {
   return projects;
 }
 
-export async function getProject(id: string): Promise<Project | null> {
+export async function getProject(id: number): Promise<Project | null> {
   let project: Project | null = null;
   try {
     project = await prisma.project.findFirst({

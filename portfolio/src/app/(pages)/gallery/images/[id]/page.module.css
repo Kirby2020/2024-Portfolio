@@ -9,6 +9,7 @@
 
 .imageInfo {
   margin-right: 4rem;
+  min-width: 20vw;
 }
 
 .imageInfo div {

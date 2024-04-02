@@ -8,6 +8,11 @@ import {
   StorageError,
 } from "firebase/storage";
 
+/**
+ * Uploads an image to Firebase Storage
+ * @param image
+ * @returns previewUrl or null
+ */
 export async function uploadImage(image: File): Promise<string | null> {
   const firebaseStorage = getStorage(firebaseApp);
 
@@ -16,8 +21,7 @@ export async function uploadImage(image: File): Promise<string | null> {
 
   return await uploadBytes(firebaseImagesRef, image)
     .then(async (snapshot) => {
-      const previewUrl = await getDownloadURL(snapshot.ref);
-      return previewUrl;
+      return await getDownloadURL(snapshot.ref);
     })
     .catch((error: StorageError) => {
       console.log(error.message);

@@ -1,4 +1,4 @@
-import { ImageExtension, ImageTag, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -35,15 +35,13 @@ async function main() {
 
 async function generateProjects() {
   for (let i = 0; i < 10; i++) {
-    const id = "Project_" + i;
     const randomImageIndex = i % imageUrls.length;
     const project = await prisma.project.upsert({
-      where: { id: id },
+      where: { id: i },
       update: {},
       create: {
-        id: id,
-        title: id,
-        description: "Description " + id,
+        title: "Project " + i,
+        description: "Description " + i,
         previewUrl: imageUrls[randomImageIndex],
         url: "#",
         type: i % 2 == 0 ? "GitHub" : "YouTube",
@@ -64,6 +62,7 @@ async function generateCollection(title: string, numImages: number) {
     data: {
       title: title,
       images: { connect: imageIds.map((id) => ({ id })) },
+      previewUrl: imageUrls[0],
     },
   });
 }
@@ -73,13 +72,8 @@ async function generateImage(index: number) {
   const tags = await getRandomTags();
   const image = await prisma.image.create({
     data: {
-      title: "Image " + (index + 1),
       fileName: imageUrl.split("/").pop()!,
       filePath: imageUrl,
-      fileExtension: ImageExtension.PNG,
-      fileDimensionX: Math.random() * 1000,
-      fileDimensionY: Math.random() * 1000,
-      fileSize: Math.random() * 10,
       tags: { connect: tags.map((tag) => ({ id: tag.id })) },
     },
   });
