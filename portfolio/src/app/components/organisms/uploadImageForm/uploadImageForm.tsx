@@ -1,7 +1,7 @@
 "use client";
 
 import createImageFromForm from "./action";
-import { addImageToCollection } from "@/app/api/gallery/collectionsController";
+import { addImageToCollection } from "@/app/api/gallery/imagesController";
 
 interface Props {
   collectionId: number;

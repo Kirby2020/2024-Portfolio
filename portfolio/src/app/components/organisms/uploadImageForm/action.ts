@@ -1,5 +1,5 @@
 "use server";
-import { createImage } from "@/app/api/gallery/collectionsController";
+import { createImage } from "@/app/api/gallery/imagesController";
 import { uploadImage } from "@/app/lib/firebase/images";
 
 export default async function createImageFromForm(data: FormData) {
