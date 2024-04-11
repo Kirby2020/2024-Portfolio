@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import {
   ImageWithTags,
   getImageWithTags,
-} from "@/app/api/gallery/collectionsController";
+} from "@/app/api/gallery/imagesController";
 import ImageContainer from "@/app/components/atoms/imageContainer/imageContainer";
 import PageHeader from "@/app/components/molecules/pageHeader/pageHeader";
 import Link from "next/link";

@@ -29,19 +29,6 @@ export type CollectionWithImages = Prisma.PromiseReturnType<
   typeof getCollectionWithImages
 >;
 
-export async function getImageWithTags(id: number) {
-  const image = await prisma.image.findFirst({
-    where: { id: id },
-    include: {
-      tags: true,
-    },
-  });
-
-  return image;
-}
-
-export type ImageWithTags = Prisma.PromiseReturnType<typeof getImageWithTags>;
-
 export async function createEmptyCollection(title: string) {
   const newCollection = await prisma.collection.create({
     data: {
