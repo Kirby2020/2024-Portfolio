@@ -48,13 +48,6 @@ model ImageTag {
   images Image[]
 }
 
-enum ImageExtension {
-  PNG
-  JPG
-  JPEG
-  GIF
-}
-
 model Collection {
   id         Int     @id @unique @default(autoincrement())
   title      String
