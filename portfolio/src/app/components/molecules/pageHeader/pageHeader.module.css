@@ -1,0 +1,46 @@
+.pageHeader {
+    margin-bottom: 6rem;
+}
+
+.pageHeader div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60vw;
+    min-height: 10rem;
+}
+
+.pageHeader h1 {
+    margin: 0;
+}
+
+.pageHeader p {
+    margin: 3rem 0;
+}
+
+.pageHeader a {
+    color: var(--accent-color);
+}
+
+.left {
+    align-items: start;
+    text-align: start;
+    margin-right: auto;
+}
+
+.center {
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.right {
+    align-items: end;
+    text-align: end;
+    margin-left: auto;
+}
+
+.separator {
+    border: 1px solid var(--accent-color);
+    width: 60%;
+}

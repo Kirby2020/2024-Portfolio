@@ -1,0 +1,7 @@
+.projectImage {
+  position: relative;
+}
+
+.projectImage img {
+  max-width: 100%;
+}

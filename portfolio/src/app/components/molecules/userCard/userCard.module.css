@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--background-color-primary);
+    background-color: var(--card-background-color);
     border-radius: var(--border-radius-card);
     padding: 4rem;
     height: 50rem;

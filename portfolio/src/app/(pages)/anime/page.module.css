@@ -1,0 +1,8 @@
+.animeList {
+  margin-bottom: 8rem;
+}
+
+.animeList > h2 {
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
