@@ -29,14 +29,16 @@ export type CollectionWithImages = Prisma.PromiseReturnType<
   typeof getCollectionWithImages
 >;
 
-export async function createEmptyCollection(title: string) {
-  const newCollection = await prisma.collection.create({
+export async function createEmptyCollection(data: FormData) {
+  const title = data.get("title") as string;
+
+  const collection = await prisma.collection.create({
     data: {
       title: title,
     },
   });
 
-  return newCollection;
+  return collection;
 }
 
 export async function updateCollectionPreview(collectionId: number) {

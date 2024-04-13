@@ -5,9 +5,7 @@ import { redirect } from "next/navigation";
 
 export default function CollectionCreateForm() {
   async function clientAction(data: FormData) {
-    const title = data.get("title") as string;
-
-    const collection = await createEmptyCollection(title);
+    const collection = await createEmptyCollection(data);
 
     if (collection) {
       return redirect(`/gallery/collections/${collection.id}`);
@@ -17,13 +15,8 @@ export default function CollectionCreateForm() {
   return (
     <div className="form">
       <form action={clientAction}>
-        <input
-          type="text"
-          name="title"
-          required
-          minLength={5}
-          maxLength={255}
-        />
+        <label htmlFor="title">Title</label>
+        <input type="text" name="title" required minLength={5} maxLength={40} />
         <input type="submit" value="Submit" />
       </form>
     </div>
