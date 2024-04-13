@@ -1,4 +1,5 @@
 import firebase from "firebase/compat/app";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -14,3 +15,5 @@ const firebaseConfig = {
 export const firebaseApp = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
+
+export const imageStorage = getStorage(firebaseApp);

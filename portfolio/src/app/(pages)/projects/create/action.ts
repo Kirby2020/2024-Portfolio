@@ -1,7 +1,7 @@
 "use server";
 
 import { createProject } from "@/app/api/projects/projectsController";
-import { uploadImage } from "@/app/lib/firebase/images";
+import { uploadImageToFirebase } from "@/app/lib/firebase/images";
 import { projectValidator } from "@/app/lib/zod/validateProject";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -28,7 +28,7 @@ export default async function createProjectFromForm(data: FormData) {
     };
   }
 
-  const imageUrl = await uploadImage(formImage);
+  const imageUrl = await uploadImageToFirebase(formImage);
 
   if (!imageUrl) {
     return {

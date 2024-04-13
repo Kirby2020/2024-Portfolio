@@ -1,7 +1,9 @@
 "use client";
 
-import createImageFromForm from "./action";
-import { addImageToCollection } from "@/app/api/gallery/collectionsController";
+import {
+  addImageToCollection,
+  createImage,
+} from "@/app/api/gallery/imagesController";
 
 interface Props {
   collectionId: number;
@@ -9,10 +11,12 @@ interface Props {
 
 export default function UploadImageForm(props: Props) {
   async function clientAction(data: FormData) {
-    const image = await createImageFromForm(data);
+    const image = await createImage(data);
+
     if (!image) {
       return;
     }
+
     await addImageToCollection(props.collectionId, image.id);
   }
   return (

@@ -29,61 +29,19 @@ export type CollectionWithImages = Prisma.PromiseReturnType<
   typeof getCollectionWithImages
 >;
 
-export async function getImageWithTags(id: number) {
-  const image = await prisma.image.findFirst({
-    where: { id: id },
-    include: {
-      tags: true,
-    },
-  });
+export async function createEmptyCollection(data: FormData) {
+  const title = data.get("title") as string;
 
-  return image;
-}
-
-export type ImageWithTags = Prisma.PromiseReturnType<typeof getImageWithTags>;
-
-export async function createEmptyCollection(title: string) {
-  const newCollection = await prisma.collection.create({
+  const collection = await prisma.collection.create({
     data: {
       title: title,
     },
   });
 
-  return newCollection;
-}
-
-export async function createImage(fileName: string, filePath: string) {
-  const newImage = await prisma.image.create({
-    data: {
-      fileName: fileName,
-      filePath: filePath,
-    },
-  });
-
-  return newImage;
-}
-
-export async function addImageToCollection(
-  collectionId: number,
-  imageId: number
-) {
-  const collection = await prisma.collection.update({
-    where: { id: collectionId },
-    data: {
-      images: {
-        connect: {
-          id: imageId,
-        },
-      },
-    },
-  });
-
-  await updateCollectionPreview(collectionId);
-
   return collection;
 }
 
-async function updateCollectionPreview(collectionId: number) {
+export async function updateCollectionPreview(collectionId: number) {
   const images = await prisma.collection.findFirst({
     where: { id: collectionId },
     include: {
