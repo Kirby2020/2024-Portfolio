@@ -82,6 +82,10 @@ input {
   text-decoration: none;
 }
 
+a {
+  color: var(--accent-color);
+}
+
 form {
   display: flex;
   flex-direction: column;
